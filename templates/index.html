@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+
+<style>
+.form-header  {
+  background-color: #EFF0F1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.form-header h1 {
+  font-size: 30px;
+  text-align:center;
+  color:#666;
+  padding:20px 0;
+  border-bottom:1px solid #cccccc;
+}
+.signup-form .form-footer  {
+  background-color: #EFF0F1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding:10px 40px;
+  text-align: right;
+  border-top: 1px solid #cccccc;
+  clear:both;
+}
+.btn {
+   display:inline-block;
+   padding:10px 20px;
+   background-color: #1BBA93;
+   font-size:17px;
+   border:none;
+   border-radius:5px;
+   color:#bcf5e7;
+   cursor:pointer;
+    padding-top: 10px;
+}
+
+.btn:hover {
+  background-color: #169c7b;
+  color:white;
+}
+.form
+{
+     background-color: transparent;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+    color:whitesmoke;
+}
+
+
+</style>
+
+</head>
+
+<body style="background-image:url('/static/css/mine.jpg'); background-repeat:no-repeat;background-size:cover;">
+
+
+ <div class="login" >
+	
+<div class="form-header">
+        <h1>Mine Explosion Prediction</h1>
+      </div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post" class="signup-form">
+	
+    
+    <div class="form">
+    <table align="center">
+	<tr>
+
+	    <td>Seismic:</td>
+		<td> <select name="seismic" required="required">
+            <option value="">---</option>
+			<option value="0">a</option>
+			<option value="1">b</option>
+			</select>
+		</td>
+		<td>Shift:</td>
+		<td>
+		<select name="shift" required="required">
+            <option value="">--- </option>
+			<option value="0">N</option>
+			<option value="1">W</option>
+		</select>
+		</td>
+	</tr>
+		
+  
+	<tr><td>genergy:</td><td> <input type="text" name="genergy"  required="required" /></td>
+    <td>guls:</td><td> <input type="text" name="gpuls" required="required" /></td></tr>
+    <tr><td>gdpuls:</td><td> <input type="text" name="gdpuls"  required="required" /></td>
+    <td>nbumps:</td><td> <input type="text" name="nbumps"  required="required" /></td></tr>
+    <tr><td>numbps2:</td><td> <input type="text" name="nbumps2"  required="required" /></td>
+    <td>nbumps3:</td><td><input type="text" name="nbumps3"  required="required" /></td></tr>
+    <tr><td>nbumps4:</td><td><input type="text" name="nbumps4"  required="required" /></td>
+    <td>nbumps5:</td><td><input type="text" name="nbumps5"  required="required" /></td></tr>
+    <tr><td>energy:</td><td><input type="text" name="energy"  required="required" /></td>
+    <td>maxenergy:</td><td><input type="text" name="maxenergy"  required="required" /></td></tr>
+    <tr><td>ghazard:</td><td>
+		<select name="ghazard" required="required">
+            <option value="">---</option>
+			<option value="0">a</option>
+			<option value="1">b</option>
+			<option value="2">c</option>
+		</select></td>
+	    <td>seismoacoustic:</td><td>
+		<select name="seismoacoustic" required="required">
+            <option value="">--- </option>
+			<option value="0">a</option>
+			<option value="1">b</option>
+			<option value="2">c</option>
+		</select></td></tr>
+    </table>
+    <button  type="submit" class="btn btn-primary btn-block btn-large" align="center" style="width:50%">Predict</button>
+    </form>
+ <br>
+   <br>
+   {{ prediction_text }}
+     </div>
+ </div>
+
+
+</body>
+</html>
+
